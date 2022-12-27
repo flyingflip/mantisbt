@@ -29,12 +29,17 @@ RUN chmod 755 /var/www/html/web
 
 RUN chown -R apache:apache /var/www/html
 
+RUN rm /etc/apache2/conf.d/ssl.conf
 COPY files/apache-default-host.conf /etc/apache2/conf.d/apache-default-host.conf
 COPY files/ssl_environment_variable.conf /etc/apache2/conf.d/ssl_environment_variable.conf
 COPY files/httpd.conf /etc/apache2/httpd.conf
 COPY files/bashrc /root/.bashrc
 COPY files/startup.sh /startup.sh
 RUN chmod 755 /startup.sh
+
+# Add our localhost certificate
+ADD ./files/localhost.crt /etc/ssl/certs/localhost.crt
+ADD ./files/localhost.key /etc/ssl/private/localhost.key
 
 RUN rm /usr/bin/vi
 RUN ln -s /usr/bin/vim /usr/bin/vi
