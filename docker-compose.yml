@@ -1,0 +1,36 @@
+version: '3'
+services:
+
+  webapp:
+    image: mbagnall/mantis:latest
+    container_name: mantis
+    ports:
+      - 8111:80
+      - 9111:443
+    volumes:
+      - ./mantis/config:/var/www/html/config
+    networks:
+      - mantis
+    restart: unless-stopped
+
+  datastore:
+    image: mariadb:10.6
+    container_name: mantisdb
+    environment:
+      MYSQL_USER: 'user'
+      MYSQL_DATABASE: 'bugtracker'
+      MYSQL_PASSWORD: 'strongpassword'
+      MYSQL_ROOT_PASSWORD: 'strongpassword'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+    expose:
+      - "3306"
+    volumes:
+      - ./mantis/mariadb:/var/lib/mysql
+    networks:
+      mantis:
+        aliases:
+          - db
+    restart: unless-stopped
+
+networks:
+  mantis:
