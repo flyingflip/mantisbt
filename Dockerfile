@@ -1,7 +1,7 @@
 FROM alpine:3.16
 
 LABEL name="FlyingFlip MantisBT Image"
-LABEL author="Michael R. Bagnall <michael@bagnall.io>"
+LABEL author="Michael R. Bagnall <mbagnall@flyingflip.com>"
 LABEL vendor="FlyingFlip Studios, LLC."
 
 ENV TERM xterm

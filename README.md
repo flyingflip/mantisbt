@@ -1,6 +1,9 @@
-# Mantis - Unofficial Docker Container
+# MantisBT - Unofficial Docker Container
 
-Platforms: AMD/ARM
+Maintained by: [FlyingFlip Studios, LLC](https://www.flyingflip.com)  
+Official Page: [MantisBT](https://mantisbt.org/index.php)  
+
+### Platforms: AMD/ARM
 
 This is an unofficial docker container for the Mantis bugtracking system. It features persistent file systems and databases and examples of how it can be setup in a way where upgrades and tear downs are possible without losing data and maintaining security.
 
@@ -11,7 +14,7 @@ version: '3'
 services:
 
   webapp:
-    image: mbagnall/mantis:latest
+    image: flyingflip/mantis:latest
     container_name: mantis
     ports:
       - 8111:80
@@ -44,7 +47,7 @@ networks:
   mantis:
 ```
 
-Once you have this in place, you can issue the `docker-compose-up-d` command to start up your container.
+Once you have this in place, you can issue the `docker-compose up -d` command to start up your container.
 
 ## Setup
 
