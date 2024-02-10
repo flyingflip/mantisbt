@@ -21,8 +21,8 @@ RUN apk update && \
 # By default, alpine puts PHP in as "php7" or "php8". We need to homogenize it.
 RUN ln -s /usr/bin/php81 /bin/php
 
-COPY mantis/mantisbt-2.25.7.tar.gz /var/www/html/mantisbt-2.25.7.tar.gz
-RUN cd /var/www/html/ && tar -xvzf mantisbt-2.25.7.tar.gz && mv mantisbt-2.25.7 web
+COPY mantis/mantisbt-2.26.0.tar.gz /var/www/html/mantisbt-2.26.0.tar.gz
+RUN cd /var/www/html/ && tar -xvzf mantisbt-2.26.0.tar.gz && mv mantisbt-2.26.0 web
 RUN chown -R root:root /var/www/html/web
 RUN chmod 755 /var/www/html/web
 
